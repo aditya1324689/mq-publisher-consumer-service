@@ -1,0 +1,20 @@
+package com.microservice.mq;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * Entry point for this application
+ * Responsibilities:
+ * - Bootstraps the Spring application context
+ * - Enables auto-configuration and component scanning
+ * - Starts the embedded server to expose REST endpoints
+ */
+@SpringBootApplication
+public class MqPublisherConsumerServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MqPublisherConsumerServiceApplication.class, args);
+	}
+
+}
