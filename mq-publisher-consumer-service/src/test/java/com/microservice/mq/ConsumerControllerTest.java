@@ -9,6 +9,12 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+
+/**
+ * These tests validates /consume endpoint:
+ * - When a message is available, the controller should return it.
+ * - When no message is available, the controller should respond accordingly.
+ */
 class ConsumerControllerTest {
 
 	@Mock
@@ -22,6 +28,7 @@ class ConsumerControllerTest {
 	}
 
 	@Test
+	// ensuring, when a message is available, ConsumerController returns the correct response and calls consume() exactly once.
 	void testConsumeMessageAvailable() {
 		when(consumer.consume()).thenReturn("{message=Hello MQ}");
 		ResponseEntity<String> response = controller.consumeMessage();
@@ -30,6 +37,8 @@ class ConsumerControllerTest {
 	}
 
 	@Test
+	// ensuring, when no message is available, ConsumerController returns the correct "No messages available in queue" response
+	// and calls consume() exactly once.
 	void testConsumeMessageEmpty() {
 		when(consumer.consume()).thenReturn(null);
 		ResponseEntity<String> response = controller.consumeMessage();
